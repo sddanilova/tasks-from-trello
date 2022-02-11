@@ -1,0 +1,7 @@
+SELECT Name
+From students s
+inner join packages p on p.id=s.id
+inner join friends f on f.id=p.id
+inner join packages p2 on p2.id = f.friend_id
+Where p2.salary>p.salary
+Order by p2.salary;
