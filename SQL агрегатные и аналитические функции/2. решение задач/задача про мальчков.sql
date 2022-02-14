@@ -12,6 +12,8 @@ insert into Task_boys (name , Year, Point)
 values('Серёжа', '2001', '10');
 
 -- решение
-Select sum(point) from task_boys
-Where name = (Select name from
-              task_boys where year='2011')
+Select l.name, k.points from
+(select name from task_boys
+where year ='2011') l
+left join
+(Select name, sum(point) points from task_boys group by name) k on l.name=k.name
